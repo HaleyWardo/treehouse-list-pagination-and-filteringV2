@@ -16,9 +16,25 @@ FSJS project 2 - List Filter and Pagination
    will only be used inside of a function, then it can be locally 
    scoped to that function.
 ***/
+const totalStudents = document.querySelectorAll('.student-item').length;
+const totalPages = Math.ceil(totalStudents / 10);
 
+const page = document.querySelector('.page');
 
+const paginationHTML = `
+<div class="pagination">
+   <ul>
+   </ul>
+</div>
+`;
 
+page.innerHTML += paginationHTML;
+const paginationUl = document.querySelector('.pagination');
+
+for (let i = 0; i < totalPages; i++) {
+   const pages = `<li><a href="#">${i + 1}</a></li>`
+   paginationUl.innerHTML += pages;
+}
 
 /*** 
    Create the `showPage` function to hide all of the items in the 
@@ -34,7 +50,7 @@ FSJS project 2 - List Filter and Pagination
        that will be passed into the parens later when you call or 
        "invoke" the function 
 ***/
-const showPage = () => {
+const showPage = (list, page) => {
    
 }
 
@@ -50,5 +66,10 @@ const appendPageLinks = () => {
 
 
 
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
+// Search HTML
+const studentSearchHTML = `
+   <div class="student-search">
+      <input placeholder="Search for students...">
+      <button>Search</button>
+   </div>
+`;
